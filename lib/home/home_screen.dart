@@ -7,6 +7,7 @@ import 'package:news/model/category.dart';
 import 'package:news/my_theme.dart';
 import 'package:news/news/news_container.dart';
 import 'package:news/settings/settings_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 var searchController = TextEditingController();
 
@@ -27,35 +28,37 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: _showSearch? TextField(
-            controller: searchController,
-            onChanged: (value){
-              setState(() {
-                newslist=[];
-              });
-              value=searchController.text;
-              ApiManager.searchNews(searchController.text);
-            },
-            style: const TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
-                hintText: 'Search Courses',
-                hintStyle: TextStyle(color: Colors.white)),
-          ):const Text(
-            "Home",
-            style: TextStyle(
-              fontSize: 16.0, /*fontWeight: FontWeight.bold*/
-            ),
-          ),
+          title: _showSearch
+              ? TextField(
+                  controller: searchController,
+                  onChanged: (value) {
+                    setState(() {
+                      newslist = [];
+                    });
+                    value = searchController.text;
+                    ApiManager.searchNews(searchController.text);
+                  },
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                      hintText: 'Search Courses',
+                      hintStyle: TextStyle(color: Colors.white)),
+                )
+              : const Text(
+                  "News",
+                  style: TextStyle(
+                    fontSize: 16.0, /*fontWeight: FontWeight.bold*/
+                  ),
+                ),
           centerTitle: true,
 
           //search icon
           actions: [
             IconButton(
-              icon:  Icon(_showSearch==false?Icons.search:Icons.close),
+              icon: Icon(_showSearch == false ? Icons.search : Icons.close),
               onPressed: () {
                 searchController.clear();
                 setState(() {
-                  _showSearch=!_showSearch;
+                  _showSearch = !_showSearch;
                 });
               },
             ),

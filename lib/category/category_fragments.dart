@@ -1,3 +1,4 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:news/category/category_item.dart';
@@ -5,12 +6,20 @@ import 'package:news/home/News_Info.dart';
 import 'package:news/model/category.dart';
 import 'package:news/my_theme.dart';
 
-class CategoryFragments extends StatelessWidget {
-  var categorieslist = Category1.getCategories();
+class CategoryFragments extends StatefulWidget {
   Function OnCategoryClick;
   CategoryFragments({required this.OnCategoryClick});
+
+  @override
+  State<CategoryFragments> createState() => _CategoryFragmentsState();
+}
+
+class _CategoryFragmentsState extends State<CategoryFragments> {
+
+
   @override
   Widget build(BuildContext context) {
+    var categorieslist = Category1.getCategories(context);
     return Container(
         padding: EdgeInsets.all(12),
         child: Column( crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -33,7 +42,7 @@ class CategoryFragments extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                         onTap: () {
-                          OnCategoryClick(categorieslist[index]);
+                          widget.OnCategoryClick(categorieslist[index]);
                         },
                         child: CategoryItem(
                             category: categorieslist[index], index: index));
