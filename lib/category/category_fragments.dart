@@ -17,14 +17,10 @@ class CategoryFragments extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell( onTap: (){
-                Navigator.pushNamed(context, NewsInfo.routename);
-              },
-                child: Text(
-                  'Pick your category \n of interest',
-                  style: Theme.of(context).textTheme.titleLarge,
-                  textAlign: TextAlign.start,
-                ),
+              child: Text(
+                'Pick your category \n of interest',
+                style: Theme.of(context).textTheme.titleLarge,
+                textAlign: TextAlign.start,
               ),
             ),
 

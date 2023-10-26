@@ -14,9 +14,15 @@ class NewsItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(15),
-          child: InkWell( onTap: (){
-           Navigator.pushNamed(context, NewsInfo.routename);
-          },
+          child: InkWell(
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context)=>NewsInfo(news: news,)
+                  )
+              );
+            },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
